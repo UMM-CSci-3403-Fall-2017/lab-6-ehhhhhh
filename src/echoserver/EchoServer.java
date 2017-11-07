@@ -1,7 +1,7 @@
+package echoserver;
+
 import java.net.*;
 import java.io.*;
-
-package echoserver;
 
 public class EchoServer {
 	public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class EchoServer {
 				System.out.println("Got a request!");
 				Socket client = sock.accept();
 
-				BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 				PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
 
 				String line;

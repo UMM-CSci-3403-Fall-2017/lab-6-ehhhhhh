@@ -1,7 +1,8 @@
+package echoserver;
+
 import java.net.*;
 import java.io.*;
 
-package echoserver;
 
 public class EchoClient {
 	public static void main(String[] args) {
