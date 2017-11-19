@@ -12,11 +12,13 @@ public class EchoServer {
 				System.out.println("Got a request!");
 				Socket client = sock.accept();
 
+				//Sets up writer and reader for the streams
 				InputStreamReader reader = new InputStreamReader(client.getInputStream());
 				OutputStreamWriter writer = new OutputStreamWriter(client.getOutputStream());
 
 				int line;
 				while (true) {
+					//Writes every byte from the inputStream to the outputStream
 					line = reader.read();
 					writer.write(line);
 				}

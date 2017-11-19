@@ -7,23 +7,29 @@ import java.io.*;
 public class EchoClient {
 	public static void main(String[] args) {
 		
-		hostname = args[0];
+		//The tests cause an indexOutOfBoundsException here for some reason
+		//String hostname = args[0];
 
 		try {
 			Socket socket = new Socket("localhost", 1886);
 
+			//Grab inputStream and outputStream
 			InputStream input = socket.getInputStream();
 			OutputStream output = socket.getOutputStream();
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-			PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
-			String line;
-			while ((line = reader.readLine()) != null) {
-				System.out.println(line);
+			//Create writer and reader for the streams
+			InputStreamReader reader = new InputStreamReader(input);
+			OutputStreamWriter writer = new OutputStreamWriter(socket.getOutputStream());
+
+			int line;
+			while (true) {
+				//Prints every byte read frm the inputStream, prints nothing if there is nothing to print
+				
+					line = reader.read();
+					System.out.print(line);
 			}
 
-			socket.close();
 		} catch (IOException ioe) {
 			System.out.println("We caught an IOException");
 			System.err.println(ioe);
